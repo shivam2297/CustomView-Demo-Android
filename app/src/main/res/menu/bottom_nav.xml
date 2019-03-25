@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/padding_up"
+        android:title="Padding Up"
+        android:icon="@drawable/ic_padding_up"/>
+    <item
+        android:id="@+id/padding_down"
+        android:title="Padding Down"
+        android:icon="@drawable/ic_padding_down"/>
+    <item
+        android:id="@+id/swap_color"
+        android:title="Swap Color"
+        android:icon="@drawable/ic_invert_colors"/>
+
+</menu>
