@@ -29,6 +29,16 @@ class EmotionalFaceView(context: Context?, attrs: AttributeSet?) : View(context,
 
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
+        // 1
+        size = Math.min(measuredWidth, measuredHeight)
+// 2
+        setMeasuredDimension(size, size)
+
+    }
+
     private fun drawFaceBackground(canvas: Canvas) {
         // 1
         paint.color = faceColor
