@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.example.shivam.customviewsdemo.R
 
 class EmotionalFaceView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     // Paint object for coloring and styling
@@ -19,6 +20,17 @@ class EmotionalFaceView(context: Context?, attrs: AttributeSet?) : View(context,
     private var size = 320
 
     private val mouthPath = Path()
+
+    var happinessState: State = State.HAPPY
+        set(state) {
+            field = state
+            invalidate()
+        }
+
+    init {
+        val typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.EmotionalFaceView)
+        happinessState = State.values()[typedArray.getInt(R.styleable.EmotionalFaceView_happiness_state, 0)]
+    }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -78,12 +90,21 @@ class EmotionalFaceView(context: Context?, attrs: AttributeSet?) : View(context,
     }
 
     private fun drawMouth(canvas: Canvas) {
+
+        mouthPath.reset()
         // 1
         mouthPath.moveTo(size * 0.22f, size * 0.7f)
-// 2
-        mouthPath.quadTo(size * 0.50f, size * 0.80f, size * 0.78f, size * 0.70f)
-// 3
-        mouthPath.quadTo(size * 0.50f, size * 0.90f, size * 0.22f, size * 0.70f)
+
+        when (happinessState) {
+            State.HAPPY -> {
+                mouthPath.quadTo(size * 0.5f, size * 0.80f, size * 0.78f, size * 0.7f)
+                mouthPath.quadTo(size * 0.5f, size * 0.90f, size * 0.22f, size * 0.7f)
+            }
+            State.SAD -> {
+                mouthPath.quadTo(size * 0.5f, size * 0.50f, size * 0.78f, size * 0.7f)
+                mouthPath.quadTo(size * 0.5f, size * 0.60f, size * 0.22f, size * 0.7f)
+            }
+        }
 // 4
         paint.color = mouthColor
         paint.style = Paint.Style.FILL
@@ -91,4 +112,8 @@ class EmotionalFaceView(context: Context?, attrs: AttributeSet?) : View(context,
         canvas.drawPath(mouthPath, paint)
     }
 
+}
+
+enum class State {
+    HAPPY, SAD
 }

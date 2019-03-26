@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Custom Square Fragment -->
     <!--<fragment-->
     <!--android:id="@+id/custom_square_fragment"-->
     <!--android:layout_width="match_parent"-->
@@ -12,6 +13,8 @@
     <!--android:name="com.example.shivam.customviewsdemo.fragments.CustomSquareFragment"-->
     <!--tools:layout="@layout/fragment_custom_square" />-->
 
+
+    <!-- Emoticon Fragment -->
     <fragment
         android:id="@+id/emotional_face_fragment"
         class="com.example.shivam.customviewsdemo.fragments.EmotionalFaceFragment"
