@@ -10,7 +10,9 @@
         android:id="@+id/emotional_face"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+
+        app:happiness_state="SAD" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -19,18 +21,21 @@
         android:layout_marginBottom="48dp"
         android:orientation="horizontal">
 
-        <Button
+        <com.example.shivam.customviewsdemo.custom_views.EmotionalFaceView
             android:id="@+id/happy_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="HAPPY" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="16dp"
 
-        <Button
+            app:happiness_state="HAPPY" />
+
+        <com.example.shivam.customviewsdemo.custom_views.EmotionalFaceView
             android:id="@+id/sad_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SAD" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:face_color="@android:color/holo_red_light"
+
+            app:happiness_state="SAD" />
 
     </LinearLayout>
 

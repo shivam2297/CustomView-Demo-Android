@@ -7,5 +7,6 @@
             <enum name="HAPPY" value="0" />
             <enum name="SAD" value="1" />
         </attr>
+        <attr name="face_color" format="color" />
     </declare-styleable>
 </resources>
