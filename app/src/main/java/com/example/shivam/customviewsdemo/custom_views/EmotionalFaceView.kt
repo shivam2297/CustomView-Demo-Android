@@ -34,6 +34,8 @@ class EmotionalFaceView(context: Context?, attrs: AttributeSet?) : View(context,
 
         faceColor = typedArray?.getColor(R.styleable.EmotionalFaceView_face_color, Color.YELLOW)
                 ?: Color.YELLOW
+
+        typedArray?.recycle()
     }
 
     override fun onDraw(canvas: Canvas) {

@@ -15,11 +15,20 @@
 
 
     <!-- Emoticon Fragment -->
+    <!--<fragment-->
+    <!--android:id="@+id/emotional_face_fragment"-->
+    <!--class="com.example.shivam.customviewsdemo.fragments.EmotionalFaceFragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:layout="@layout/fragment_emotional_face"/>-->
+
+
+    <!-- Page Indicator Fragment -->
     <fragment
-        android:id="@+id/emotional_face_fragment"
-        class="com.example.shivam.customviewsdemo.fragments.EmotionalFaceFragment"
+        android:id="@+id/page_indicator_fragment"
+        class="com.example.shivam.customviewsdemo.fragments.PageIndicatorFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_emotional_face"/>
+        tools:layout="@layout/fragment_page_indicator" />
 
 </FrameLayout>
