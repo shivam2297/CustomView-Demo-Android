@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Custom Square Fragment -->
+    <!--<fragment-->
+    <!--android:id="@+id/custom_square_fragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:name="com.example.shivam.customviewsdemo.fragments.CustomSquareFragment"-->
+    <!--tools:layout="@layout/fragment_custom_square" />-->
+
+
+    <!-- Emoticon Fragment -->
+    <fragment
+        android:id="@+id/emotional_face_fragment"
+        class="com.example.shivam.customviewsdemo.fragments.EmotionalFaceFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_emotional_face"/>
+
+</FrameLayout>
