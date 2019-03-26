@@ -28,8 +28,12 @@ class EmotionalFaceView(context: Context?, attrs: AttributeSet?) : View(context,
         }
 
     init {
-        val typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.EmotionalFaceView)
-        happinessState = State.values()[typedArray.getInt(R.styleable.EmotionalFaceView_happiness_state, 0)]
+        val typedArray = context?.obtainStyledAttributes(attrs, R.styleable.EmotionalFaceView)
+        happinessState = State.values()[typedArray?.getInt(R.styleable.EmotionalFaceView_happiness_state, 0)
+                ?: 0]
+
+        faceColor = typedArray?.getColor(R.styleable.EmotionalFaceView_face_color, Color.YELLOW)
+                ?: Color.YELLOW
     }
 
     override fun onDraw(canvas: Canvas) {
