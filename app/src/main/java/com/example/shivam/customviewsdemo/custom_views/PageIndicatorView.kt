@@ -1,5 +1,6 @@
 package com.example.shivam.customviewsdemo.custom_views
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -12,55 +13,32 @@ class PageIndicatorView(context: Context?, attrs: AttributeSet?) : View(context,
 
     private val paint = Paint()
 
+    private var radius = 0.0f
+
+    private val animator = ValueAnimator.ofFloat(0f, 90f)
+
+
     init {
         val typedArray = context?.obtainStyledAttributes(attrs, R.styleable.PageIndicatorView)
         var count = typedArray?.getInt(R.styleable.PageIndicatorView_piv_count, 0) ?: 0
 
         typedArray?.recycle()
+
+        animator.setDuration(1000)
+
+        animator.addUpdateListener {
+            radius = it.getAnimatedValue() as Float
+            invalidate()
+        }
+
+        animator.start()
     }
-
-
-//    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-//
-//        var widthMode = MeasureSpec.getMode(widthMeasureSpec)
-//        var widthSize = MeasureSpec.getSize(widthMeasureSpec)
-//        var heightMode = MeasureSpec.getMode(heightMeasureSpec)
-//        var heightSize = MeasureSpec.getSize(heightMeasureSpec)
-//
-//        when (widthMode) {
-//            MeasureSpec.EXACTLY -> {
-//
-//            }
-//            MeasureSpec.AT_MOST -> {
-//
-//            }
-//            MeasureSpec.UNSPECIFIED -> {
-//
-//            }
-//        }
-//
-//        when (heightMode) {
-//            MeasureSpec.EXACTLY -> {
-//
-//            }
-//            MeasureSpec.AT_MOST -> {
-//
-//            }
-//            MeasureSpec.UNSPECIFIED -> {
-//
-//            }
-//        }
-//
-//    }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
         val x = width/2f
         val y = height/2f
-
-        val radius = y
 
         paint.style = Paint.Style.FILL
         paint.color = Color.RED
