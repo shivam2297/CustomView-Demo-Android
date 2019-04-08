@@ -1,0 +1,37 @@
+/**
+ * Configure signing configs for each <buildType>-signing.properties file in project dir.
+ */
+android.buildTypes.each { buildType ->
+
+    // properties file
+    File propsFile = project.file(buildType.name + '-signing.properties');
+
+    if (propsFile.exists()) {
+
+        // load properties
+        Properties props = new Properties();
+        props.load(new FileInputStream(propsFile));
+
+        // define a signing config for build type
+        logger.info("Adding signing config: ${buildType.name} from: ${propsFile.name}");
+        android {
+            signingConfigs {
+                "${buildType.name}" {
+                    storeFile project.file(props.get('key.store'))
+                    storePassword props.get('key.store.password')
+                    keyAlias props.get('key.alias')
+                    keyPassword props.get('key.alias.password')
+                }
+            }
+        }
+
+        // set the signing config in build type
+        logger.info("Setting signing config:${buildType.name} for build type:${buildType.name}");
+        buildType.signingConfig = android.signingConfigs."${buildType.name}"
+
+    } else {
+        // no properties file found
+        logger.warn("Skipping signing config for build type:${buildType.name}, " +
+                "because ${propsFile.name} not found in project dir.");
+    }
+}
